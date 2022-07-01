@@ -20,7 +20,8 @@ enum game
     RoA,
     NASB,
     FGC,
-    DefaultKBD
+    DefaultKBD,
+    KBD2
 };
 
 enum SOCD {
@@ -61,7 +62,7 @@ device selectDevice(inputStatus buttonsPressed, bool hasUSB, int consoleData, bo
             // Use keyboard mode if this button is pressed
             if (buttonsPressed.modY)
                 returnDevice = KBD;
-            
+
             // Use Switch joystick mode if this button is pressed
             else if (buttonsPressed.r_Left)
                 returnDevice = NSW;
@@ -88,11 +89,19 @@ game selectGame(inputStatus buttonsPressed, device activeDevice) {
             returnGame = RoA;
         else if (buttonsPressed.l_Up)
             returnGame = FGC;
+        
             
     }
     else {
-        returnGame = DefaultKBD;
+        if (buttonsPressed.y) {
+            returnGame = KBD2;
+        }
+        else {
+            returnGame = DefaultKBD;
+        }
     }
+    
+    
     
 
     return returnGame;

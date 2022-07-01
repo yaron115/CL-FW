@@ -16,7 +16,7 @@ public:
 
         current_Pinout.up     = original_Pinout.modX;
         // Second Up button
-        current_Pinout.cUp    = original_Pinout.a;
+        current_Pinout.down    = original_Pinout.a;
 
         current_Pinout.down   = original_Pinout.down;
         current_Pinout.left   = original_Pinout.left;

@@ -17,6 +17,7 @@
 #include "GameModes/RoA.h"
 #include "GameModes/KBD.h"
 #include "GameModes/FGC.h"
+#include "GameModes/KBD2.h"
 
 //****************************************************************************//
 // Select your hardware platform
@@ -81,6 +82,8 @@ FGCMode      FGCGameMode  (controller.original_Pinout, TwoIP   , TwoIP, true);
 
 //                                                     true will make it so Up has priority over down. Change it to false if this isn't desired
 KBDMode   KBDGameMode (NormalKeyboard, NormalKeyboard, true);
+
+KBDMode2   KBD2GameMode (NormalKeyboard, NormalKeyboard, true);
 
 //****************************************************************************//
 // Device managers
@@ -203,6 +206,8 @@ void initializeGame() {
             controller.current_Pinout = FGCGameMode.current_Pinout;     break;
         case DefaultKBD :
             controller.current_Keymap = KBDGameMode.current_Keymap;     break;
+        case KBD2 :
+            controller.current_Keymap = KBD2GameMode.current_Keymap;     break;
         default :
             break;
     }
@@ -223,6 +228,8 @@ void updateOutput() {
             controlStatus = FGCGameMode.updateOutput(&buttonStatus);     break;
         case DefaultKBD :
             KBDGameMode.updateOutput(&buttonStatus);                     break;
+        case KBD2 :
+            KBD2GameMode.updateOutput(&buttonStatus);                     break;
         default :
             break;
     }   
